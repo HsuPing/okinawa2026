@@ -232,7 +232,6 @@ button { font: inherit; color: inherit; }
       <h2>還沒標在地圖上的</h2>
       <ul>
         <li>取車、還車的租車公司</li>
-        <li>燒肉五苑是哪間分店（離北谷住宿最近的是北谷店，約 4 km）</li>
         <li>11/15 午餐的漁師食堂、11/14 晚上逛的 Donki</li>
       </ul>
       <p class="small">日期：四張行程圖都寫 11/13，這裡依序排成 11/13 – 11/16。</p>
@@ -248,7 +247,7 @@ button { font: inherit; color: inherit; }
     airport: [-19.71, 26.92], parco: [-15.10, 20.98], aqua: [2.79, -27.02], dolphin: [2.58, -26.85],
     kouri: [16.65, -26.13], ufuya: [11.32, -18.91], amvil: [-9.22, 14.82], rycom: [-5.39, 15.02],
     kokusai: [-16.35, 25.98], donki: [-16.54, 25.97],
-    ramen: [-14.83, 22.32], hotel1: [-9.04, 17.11], hotel2: [-16.59, 27.12]
+    ramen: [-14.83, 22.32], hotel1: [-9.04, 17.11], hotel2: [-16.59, 27.12], goen: [-14.77, 24.45]
   };
 
   const DAYS = [
@@ -258,8 +257,9 @@ button { font: inherit; color: inherit; }
       { kind: "午餐", name: "豬骨麵", pin: "ramen", q: "浦添市仲西1丁目19-5 お肉の店 仲村", url: "https://maps.app.goo.gl/hAmfBEaLH3qTLpgv9", lab: "r",
         note: "お肉の店 仲村（浦添市仲西 1-19-5）" },
       { kind: "購物", name: "浦添西海岸 PARCO CITY", short: "PARCO CITY", pin: "parco", q: "サンエー浦添西海岸パルコシティ", lab: "r" },
-      { kind: "晚餐", name: "燒肉五苑", time: "19:30 已預訂", note: "沖繩有好幾間分店，出發前確認訂的是哪一間。",
-        alts: [["北谷店", "焼肉五苑 北谷"], ["那霸新都心店", "焼肉五苑 那覇 銘苅"]] },
+      { kind: "晚餐", name: "燒肉五苑 Across Plaza 古島站前店", short: "燒肉五苑", time: "19:30 已預訂", pin: "goen",
+        q: "焼肉五苑 アクロスプラザ古島駅前店", lab: "r",
+        note: "那霸市銘苅 1-19-2，Across Plaza 古島站前 2 樓，就在單軌電車古島站旁。" },
       { kind: "住宿", name: "Check-in", short: "北谷住宿", pin: "hotel1", q: "沖縄県北谷町北前263-2", lab: "r",
         note: "北谷町北前 263-2，住兩晚（11/13、11/14）。" },
       { kind: "購物", name: "逛超市", opt: true }
@@ -523,7 +523,7 @@ button { font: inherit; color: inherit; }
 
   const keyStops = DAYS.flatMap(d => d.stops.filter(s => s.time).map(s => ({ s, d })));
   $("keys").innerHTML = keyStops.map(({ s, d }) =>
-    `<button class="key" type="button" data-id="${s.id}" style="--dc:var(--d${d.n})"><span class="t">${esc(s.time.split(" ")[0])}</span><span class="d">${d.md}</span><span class="n">${esc(s.time.split(" ")[1] ? s.name + "・" + s.time.split(" ")[1] : s.name)}</span></button>`
+    `<button class="key" type="button" data-id="${s.id}" style="--dc:var(--d${d.n})"><span class="t">${esc(s.time.split(" ")[0])}</span><span class="d">${d.md}</span><span class="n">${esc(s.time.split(" ")[1] ? (s.short || s.name) + "・" + s.time.split(" ")[1] : (s.short || s.name))}</span></button>`
   ).join("");
 
   // ---------- Interaction ----------
