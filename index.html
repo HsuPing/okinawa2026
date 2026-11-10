@@ -337,8 +337,7 @@ button { font: inherit; color: inherit; }
     <section class="todo">
       <h2>還沒標在地圖上的</h2>
       <ul>
-        <li>取車、還車的租車公司</li>
-        <li>11/14 晚上逛的 Donki</li>
+        <li>11/14 晚上逛的 Donki（11/15 那間是國際通店，已標上）</li>
       </ul>
       <p class="small">地圖海岸線 © OpenStreetMap contributors</p>
     </section>
@@ -351,7 +350,7 @@ button { font: inherit; color: inherit; }
   const PIN = {
     airport: [-19.71, 26.92], parco: [-15.10, 20.98], aqua: [2.79, -27.02], dolphin: [2.58, -26.85],
     kouri: [16.65, -26.13], ufuya: [11.32, -18.91], amvil: [-9.22, 14.82], rycom: [-5.39, 15.02],
-    kokusai: [-16.35, 25.98], donki: [-16.54, 25.97],
+    kokusai: [-16.35, 25.98], donki: [-16.17, 25.89], rent: [-16.73, 23.43],
     ramen: [-14.83, 22.32], hotel1: [-9.04, 17.11], hotel2: [-16.59, 27.12], goen: [-14.77, 24.45],
     fish: [-16.91, 22.82]
   };
@@ -366,9 +365,11 @@ button { font: inherit; color: inherit; }
 
   const DAYS = [
     { n: 1, date: "2026-11-13", md: "11/13", dow: "五", theme: "抵達・浦添", drive: true, stops: [
-      { kind: "交通", name: "那霸機場", pin: "airport", q: "那覇空港", lab: "l", time: "12:25 抵達",
+      { kind: "交通", name: "那霸機場", pin: "airport", q: "那覇空港", lab: "l", drive: false, time: "12:25 抵達",
         note: "樂桃 MM922，桃園第 1 航廈 09:45 起飛。" },
-      { kind: "租車", name: "取車", car: true },
+      { kind: "租車", name: "取車", car: true, short: "i RENTACAR", pin: "rent", lab: "l",
+        q: "i RENTACAR 那覇", url: "https://maps.app.goo.gl/9FiEfyws1fks9DNL9",
+        note: "i RENTACAR。租車公司會派人到機場接，開車載到這裡取車。" },
       { kind: "午餐", name: "豬骨麵", pin: "ramen", q: "浦添市仲西1丁目19-5 お肉の店 仲村", url: "https://maps.app.goo.gl/hAmfBEaLH3qTLpgv9", lab: "r",
         note: "お肉の店 仲村（浦添市仲西 1-19-5）" },
       { kind: "購物", name: "浦添西海岸 PARCO CITY", short: "PARCO CITY", pin: "parco", q: "サンエー浦添西海岸パルコシティ", lab: "r",
@@ -397,13 +398,15 @@ button { font: inherit; color: inherit; }
       { kind: "午餐", name: "漁師食堂 大ばんぶる舞 さかな大統漁", short: "漁師食堂", pin: "fish", lab: "l",
         q: "漁師食堂 大ばんぶる舞 さかな大統漁 那覇市港町3-1-17", url: "https://maps.app.goo.gl/QESqdRGBsKuszm767",
         note: "那霸市港町 3-1-17，那霸港旁。" },
-      { kind: "住宿", name: "Check-in", short: "壺川住宿", pin: "hotel2", q: "Creass Hotel Tsubogawa Marche", url: "https://maps.app.goo.gl/JwTunrYoBZ6SEsJf8", lab: "r",
+      { kind: "租車", name: "還車", car: true, short: "i RENTACAR", pin: "rent", lab: "r",
+        q: "i RENTACAR 那覇", url: "https://maps.app.goo.gl/9FiEfyws1fks9DNL9",
+        note: "還到取車的 i RENTACAR。還車後請租車公司開車送到壺川的飯店 Check-in。" },
+      { kind: "住宿", name: "Check-in", short: "壺川住宿", pin: "hotel2", q: "Creass Hotel Tsubogawa Marche", url: "https://maps.app.goo.gl/JwTunrYoBZ6SEsJf8", lab: "r", drive: false,
         note: "Creass Hotel Tsubogawa Marche（那霸市壺川 1-17-26），住一晚。" },
-      { kind: "租車", name: "還車", car: true },
-      { kind: "景點", name: "國際通", pin: "kokusai", q: "国際通り 那覇", lab: "r", drive: false },
+      { kind: "景點", name: "國際通", pin: "kokusai", q: "国際通り 那覇", lab: "l", drive: false },
       { kind: "晚餐", name: "自理（拉麵）" },
-      { kind: "購物", name: "Donki", short: "Donki", pin: "donki", q: "ドン・キホーテ 国際通り店", lab: "l", off: [-26, 8], route: false, drive: false,
-        note: "推定是國際通店。" }
+      { kind: "購物", name: "Donki", short: "Donki", pin: "donki", q: "ドン・キホーテ 国際通り店", url: "https://maps.app.goo.gl/4qqvwkkFBCSghG5y6", lab: "r", route: false, drive: false,
+        note: "唐吉訶德 國際通店。" }
     ]},
     { n: 4, date: "2026-11-16", md: "11/16", dow: "一", theme: "返程", stops: [
       { kind: "住宿", name: "Check-out", short: "壺川住宿", pin: "hotel2", q: "Creass Hotel Tsubogawa Marche", url: "https://maps.app.goo.gl/JwTunrYoBZ6SEsJf8", lab: "r",
