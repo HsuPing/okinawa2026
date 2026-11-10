@@ -690,26 +690,40 @@ button { font: inherit; color: inherit; }
     $("wxMeta").innerHTML = meta;
   }
 
-  function initWeather() {
-    let cached = null;
-    try { cached = JSON.parse(localStorage.getItem(WX_STORE) || "null"); } catch (e) {}
-    if (cached && cached.data) renderWx(cached.data, `顯示 ${fmtTime(cached.at)} 的預報，更新中…`);
-    else renderWx(null, "天氣預報載入中…");
+  let wxData = null, wxAt = 0;
+  const WX_EVERY = 30 * 60 * 1000;
+
+  function loadWeather() {
     const ctrl = "AbortController" in window ? new AbortController() : null;
     const timer = setTimeout(() => ctrl && ctrl.abort(), 12000);
-    fetch(WX_URL, ctrl ? { signal: ctrl.signal } : {})
+    fetch(WX_URL, { cache: "no-store", ...(ctrl ? { signal: ctrl.signal } : {}) })
       .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(data => {
         clearTimeout(timer);
-        if (!Array.isArray(data)) data = [data];
-        const at = Date.now();
-        try { localStorage.setItem(WX_STORE, JSON.stringify({ at, data })); } catch (e) {}
-        renderWx(data, `<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> 預報・${fmtTime(at)} 更新`);
+        wxData = Array.isArray(data) ? data : [data];
+        wxAt = Date.now();
+        try { localStorage.setItem(WX_STORE, JSON.stringify({ at: wxAt, data: wxData })); } catch (e) {}
+        renderWx(wxData, `<a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> 最新預報・${fmtTime(wxAt)} 更新・每 30 分鐘自動更新`);
       })
       .catch(() => {
         clearTimeout(timer);
-        renderWx(cached && cached.data, cached && cached.data ? `目前連不上，顯示 ${fmtTime(cached.at)} 的預報` : "目前無法取得天氣預報，可能是沒有網路。");
+        renderWx(wxData, wxData ? `目前連不上，顯示 ${fmtTime(wxAt)} 的預報` : "目前無法取得天氣預報，可能是沒有網路。");
       });
+  }
+
+  function initWeather() {
+    try {
+      const cached = JSON.parse(localStorage.getItem(WX_STORE) || "null");
+      if (cached && cached.data) { wxData = cached.data; wxAt = cached.at; }
+    } catch (e) {}
+    renderWx(wxData, wxData ? `顯示 ${fmtTime(wxAt)} 的預報，更新中…` : "天氣預報載入中…");
+    loadWeather();
+    // Keep it current while the page stays open: every 30 minutes while it is on screen,
+    // and right away when the page comes back to the foreground with data older than that.
+    setInterval(() => { if (document.visibilityState === "visible") loadWeather(); }, WX_EVERY);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && Date.now() - wxAt > WX_EVERY) loadWeather();
+    });
   }
 
   // ---------- Map ----------
