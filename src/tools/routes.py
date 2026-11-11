@@ -13,7 +13,7 @@ P = {
 LEGS = [
   (1, "airport", "rent", "ride"), (1, "rent", "ramen", "drive"), (1, "ramen", "parco", "drive"),
   (1, "parco", "goen", "drive"), (1, "goen", "hotel1", "drive"),
-  (2, "hotel1", "aqua", "drive"), (2, "aqua", "kouri", "drive"), (2, "kouri", "ufuya", "drive"), (2, "ufuya", "amvil", "drive"),
+  (2, "hotel1", "aqua", "drive"), (2, "aqua", "ufuya", "drive"), (2, "ufuya", "kouri", "drive"), (2, "kouri", "amvil", "drive"),
   (3, "hotel1", "rycom", "drive"), (3, "rycom", "fish", "drive"), (3, "fish", "rent", "drive"),
   (3, "rent", "hotel2", "ride"), (3, "hotel2", "kokusai", "walk"), (3, "kokusai", "donki", "walk"),
   (4, "hotel2", "airport", "ride"),
