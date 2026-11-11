@@ -122,6 +122,15 @@ button { font: inherit; color: inherit; }
 }
 .fl-line::after { content: ""; position: absolute; right: -2px; top: -5.75px; border: 5px solid transparent; border-right: 0; border-left: 7px solid var(--dc); }
 .fl-tz { grid-column: 1 / -1; margin: 0; font-size: 12.5px; color: var(--ink-soft); }
+.vjw {
+  grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; row-gap: 2px;
+  padding: 11px 14px; border: 1px solid var(--line); border-left: 4px solid var(--d1); border-radius: 12px;
+  background: var(--card); color: var(--ink); text-decoration: none;
+}
+.vjw:hover { border-color: var(--d1); }
+.vjw-t { font-weight: 700; font-size: 14.5px; line-height: 1.35; }
+.vjw-d { grid-column: 1; font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); }
+.vjw .arr { grid-column: 2; grid-row: 1 / 3; font: 500 16px/1 var(--f-mono); color: var(--d1); }
 
 /* Key times: a ruled timetable */
 .keys { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); column-gap: 28px; border-top: 1px dotted var(--perf); }
@@ -444,6 +453,9 @@ button { font: inherit; color: inherit; }
   const LAND = ["iwy~Com~iWkBwPplA}AK_UsxCt@{G_d@`Rh[j~@el@r`A}AhPdYbKePoJ}x@hK{XgCbp@r]o@WsVdRyI?f\\rJs@eFqWtMaAdTxq@te@uGwAaMij@}BuFk_Ap|@sv@`j@~cCraA{QpCxJdDY~e@yT?zKbEmQoHmMcp@rO_Igj@jOsCKbOpNfDjEiJiGz@wJys@n@qD~@e@|Vr@eQjFxPx[|UkB`@cf@`_@jm@_Gsk@vLnCaJhApEn[pFpMvT|CtHoYfz@f^j_CdO|TuKrMgyAfWaSkCmZu]uVwk@csAwPs}@nPei@qTs`A{c@yJqN{j@c`A}]{GsTqq@o`@sC{n@gZcRvF_H_BkLaCpNwL_n@y^qBuUgl@`P_eAeNmd@yiAy}@iPoZ`JcIzJpIeQiUcRnMqTcUiP_n@qr@{i@rAu[g{@pDyD{GwCaAdAzFmJcA}@xKwEGaFbP~D{JpDvAsFj]{dA`G~b@|cDfpAbh@gPkWnZtHrBrQwShKxJfEuA|g@qk@mC{ApOuMqEtHeQ_P`Bsi@jStDdKoJg@_GlWgl@|EiTftAkZcK_j@a_AnC}OyM}IdHeMmVaTbMaBiN}BsM|StJuSki@__@BuRfj@sb@{j@hb@gWeNiHxKogBwHoZa`@eMvEhMgIiQnJkSkRar@iKor@kaAzVsXyQ`EyRkWukA_C{Tfe@sg@kD_a@g\\nHmhAqz@}FaCqcB_D~^eH}CdKwe@ib@fD}@p^mPZnKjDqKy@mEfSdItNiRqEjGmScKf[cIqCuu@_{@us@_kB~QmXf|@ab@~GhHtNqJcS|DtkCoiCvf@wgA|QdIcSwTtH{KvMzF_NoInAkGdHxA|AaC{DyI|FrGpXwY}Asb@kl@cLmOxJkGw@gAcFiMoDhIlI{HfG{Ie@`EeOsOlGnBhNu_@hLkAgJiuAluAwBcw@oB@sGrgBqq@v_ARcQq@hS}}AvkAac@|Lic@qPyr@rFaHa`@bLi@wM[VfKyp@tW{f@fhAg_@`Nmn@b}AiHcd@nBf~@yn@vXsXqMoC~u@{UdTyUu\\{Q~GrHyRsZpO|]a|@oOgKxJ_FeLbEc`@uVwKfQafAkm@kw@evBdVan@qHyl@}KkCvs@wxArImvA`R}CSkJ{NhJEgK|MuMjK~IxUyj@gOcIvKiJ_McsAfX_p@eR{BaNjb@im@pBqTqGgU{m@CzNsf@fTyNm_@}d@HyDi{@jc@{f@em@qsCaTeI}LvQhBy\\eSwi@k\\_Hwe@bJe\\zi@{a@vN_ZuYoIuWd_@}]mJcLe[jJ{Q{[rYgcBmWmm@oa@vKwAkz@h[oNka@{qAp@xRkN@ka@jh@ml@zIo_BhdAyKgCpL}FmCaVgj@_N|MyJza@fLlTyMiF}`@nIgJqYuy@HyRvE|JlEcJ_UeGtNwBtHum@xkAszAjMmo@wNhPqTqBeG}NbO{d@yZnGme@em@gb@mqB}@os@jLyWwoAtBiJoqA_Xng@arAjh@kl@dy@waA|^pW}yApDdN_@uLwNmKfLiGrFaaAwVv@ca@eWoe@fJmOlTvG|Cwn@~Uil@sOwGudAlNyp@xG|FiDmf@~Wu}@}Ms{DsQ_YiP{fCi[cJkFwYsJjF_U_SyMec@_h@bGmMyXq\\yErIkS{JsYqu@iE{Nuy@}e@q_@s]dIw}@oKaM{VqPnLt@ma@q_@}i@_i@jQmHck@eMgG_d@j_@uQ{z@ev@_N}[clA{[oCcVcb@fNjc@uJ`BsAaZjAbZ}Db@x@sLcF`GkV{PcH}^sl@[nNrN}Qbb@qEcTcm@iRge@rSmi@wXu~@~ToVbd@wR{[}_AxVgq@uPgGfTeg@zEyMri@iZvUidBk@eJflA~V}JfE``@aVbCE_Oua@zdAk`@`BaO~|@sm@xs@}j@}PqLpm@x[dp@lkA~`@hp@ug@yA_N|Qy@?vDmKpBo@jBrMaE~ByG|[`A|iA`x@re@xAtyBtpAzj@cG|C`c@rs@|OhtAztBlu@pHoIz`@rh@fm@do@hObZbZbFjk@mJkFlj@fsArAph@gPnDsAvTl\\tN|Ked@tbAy[lg@fLgH|@r\\lNvbA`{Az\\bgBkCpb@pApJtpAfbA~b@|JtVpd@~~@mf@dHyNqR_DtByd@bVul@bY}@pRyXjHht@}ZhMnXhWo^eMeWtKda@nPmGf]pR|SiFhT`fAju@pEzXp_@r[p@rr@xy@|xBkG`rBvRcCjZ`i@_LnCbWdGab@jiAdMbc@kRt]eYyEcb@l]{^~~A_TbB_@uo@oUhLyq@yZuv@\\kZ_Sei@ujAqYjNwUps@qE_KoEj}AoYbd@jAvg@zOcCrBlL_U|[oa@oXw^rgBjc@|dC_Lt@hLvn@wCh_AdW|z@oW`MnH|^or@lfBdk@\\nTtT`NiI~c@nXrf@[d^mq@`DdBpJkBaJwIzQjDpFs]`eAaPjLrLbD}f@hHn_@qIpGbf@nz@pXeIh]lKjJkHsCbIbMrAmDyLbJE@lTv{@k{@bi@qCp_Awo@vo@^va@moBwp@el@Jak@fe@}z@xBiw@zjAszB_IkInTmdAuGwGbHbFb]eMq^tCnOuPjHbFoEwHf{@gD|}@fXhxAznAp{@bQZrZiQiEwNvNlIzh@pe@rUjVji@kPj\\gVoBmKfYnd@eEb\\xSg@jMfIkFbVxNgCpb@fq@zBx[`ZkDbc@eQbOl]x\\`SpkAhTeCv_@d^}Cvd@as@rp@`QhO_WvEl@jKzOcKdAhRp`@nSw_@h_@r_@uJzQxW`EgL~GzIkg@b_@tHjg@nc@dJxInTp\\i[h`AsNrDlGhJ`VbAl@VdAeEj]ddAtw@n_@niA{@rHqFd@WdDjg@`F|Qxi@`i@xYuBuQbVMmM~TlPmK[aQdo@j]zIvgBwUhF_Sxm@cWfNpr@h_@_MfNzHxOxDgRh[n]l`@zfAb^pVbA`c@oGbUwfBjz@qBhsAzk@y_@zyAtS|bAkCpkBmw@p@zHfE~AcBaOnMl@cH|HfMwEuCmMxc@{Y`tBqo@pHyw@yJfAaDcBYiPw]uf@o@}BHaDlKpCqArH~Vp`@dA|QfR_@_Iha@nO|Kby@aNwMaF|E_PvQxEhv@iR~t@d]rbAyg@iW{[lD}Ip\\tQzZgFnSuJpDq[zp@nRh]cFnQ`KgIpStb@xLvIfp@xUKOz\\pT}QcLn|@tQ~AbKpc@cIc`@pH}G|MpRcL|LhRoKqJpLzz@wEu^xRfE~N{KaFdTrOsXgDvUbGeXI`@|i@bT|IkQjNxtB|kBqI~YKlcAzI`QsBobA~oAyHcPp]lIpAoK~Fe@qIEt`@mYE{@iOUbu@xa@XBlI`S?eIgLj^sQpDz^x`@@Beh@op@yGCmKrVe@cViL~y@}DuFpKjSXvHwFyM}GfQc@`FqWjI~IgLrWbNzU{Q~Ad`@lUsExYpH~^|NzKmN_MxCkFxLbOb^mh@rGvElLgq@jJtBsGnOhLuJfGlKyn@zo@~CfL_GmJq@xb@oXlYjEjYpx@js@fAsK~R`Ch@hj@sOtEVpTznBaEvCtP","{tp_DikfkWje@cd@sLaFl@}]`Kf@yEwQgLxCbB}LkFnNi\\wEUteA`OhU","qwv_Daf{kWiWsx@Bea@vRiCbEsNaEvKcM}IxCkLzQzFqEeHguAwzAyWg@{Fv]kh@pA~c@lxAcJrSnHtf@ul@jMnz@y@|r@{]b[lJl_@lh@","ka|_D_}`lWdk@eCfXoq@aQjGyi@_|Bg\\rPeBqTyk@rX@rj@kKtCmRia@ob@pNl^tZtVt_AxoAtZ","gt``DgwdlWdJ_KwJaKnWhD~C}i@ikB}b@{@`v@zYhInNl^hXuPpLnQ","q~t_Dei}kW`jAsKrf@qi@oQoKiXbEnJyHmOdGeJaf@w_@mMfIdLok@v|@aAp`@zH{TlC`]","y{d_DcwykWlHcIpHax@cYhBqO{Yez@eIqLrHqMpRZrf@dx@iF`X~Y|YtCcIeGpOyToDvd@","mh_bDurhlWfrAil@iMhAbNa]oGeVw\\gV{~@cA_Wvq@F`l@xh@xX","gavaDwvelWvWiU_@ug@`TkCpOea@{\\qAoJ}f@jr@c_B~TqBlH`LaHuPka@}Lku@tKqLpb@ao@d`@ebAbHcCdExMlQ}Dzl@~ZjEqDnO~H]MvNsMdBjFxYnXd@|AxWpMwGhr@hO","swsaDgrjkWl~@y]hh@vHlM{XiyBclA{]vo@~`@hjA","aebbDw}ujWx`Aw[x]ez@cJhGkGedDxPq~A~NeKiJWnFoa@iJCwQoiBsj@kTan@vOyzA|aCdc@ptB_YpyDjZvh@zbAfU","ylsaDmxakWTqL}KkLlL{LlGhQy@_s@{c@|d@`\\pc@"];
 
   // Times are local: Taiwan UTC+8, Okinawa UTC+9.
+  // Japan's entry registration (immigration + customs QR codes).
+  const VJW = "https://www.vjw.digital.go.jp/main/#/vjwplo001";
+
   const FLIGHTS = [
     { label: "去程", date: "11/13（五）", airline: "樂桃", no: "MM922", day: 1,
       from: "台北桃園", fromNote: "第 1 航廈", dep: "09:45", to: "沖繩那霸", arr: "12:25" },
@@ -454,7 +466,8 @@ button { font: inherit; color: inherit; }
   const DAYS = [
     { n: 1, date: "2026-11-13", md: "11/13", dow: "五", theme: "抵達・浦添", drive: true, wx: "naha", stops: [
       { kind: "交通", name: "那霸機場", pin: "airport", q: "那覇空港", drive: false, time: "12:25 抵達",
-        note: "樂桃 MM922，桃園第 1 航廈 09:45 起飛。" },
+        note: "樂桃 MM922，桃園第 1 航廈 09:45 起飛。入境審查和海關申報出示 Visit Japan Web 的 QR code。",
+        links: [["Visit Japan Web", VJW]] },
       { kind: "租車", name: "取車", car: true, pin: "rent",
         q: "i RENTACAR 那覇", url: "https://maps.app.goo.gl/9FiEfyws1fks9DNL9",
         note: "i RENTACAR。租車公司會派人到機場接，開車載到這裡取車。" },
@@ -539,6 +552,7 @@ button { font: inherit; color: inherit; }
     const pinned = !!s.pin;
     const links = [];
     if (s.q || s.url) links.push(`<a href="${s.url || gmap(s.q)}" target="_blank" rel="noopener">Google 地圖 <span class="arr">↗</span></a>`);
+    (s.links || []).forEach(([text, href]) => links.push(`<a href="${href}" target="_blank" rel="noopener">${esc(text)} <span class="arr">↗</span></a>`));
     const [hm, ...tl] = (s.time || "").split(" ");
     const leg = legOf(s);
     return `<li class="stop ${pinned ? "has-pin" : "no-pin"}${s.car ? " car" : ""}${s.opt ? " is-opt" : ""}" id="${s.id}" data-id="${s.id}" style="--mc:var(--c-${s.cat})">
@@ -608,7 +622,12 @@ button { font: inherit; color: inherit; }
           <div class="fl-pt"><span class="fl-time">${f.arr}</span><span class="fl-city">${esc(f.to)}</span></div>
         </div>
       </div>
-    </div>`).join("") + `<p class="fl-tz">時間都是當地時間，沖繩比台灣快 1 小時。</p>`;
+    </div>`).join("") + `<p class="fl-tz">時間都是當地時間，沖繩比台灣快 1 小時。</p>
+    <a class="vjw" href="${VJW}" target="_blank" rel="noopener">
+      <span class="vjw-t">Visit Japan Web</span>
+      <span class="vjw-d">入境審查和海關申報時出示 QR code</span>
+      <span class="arr" aria-hidden="true">↗</span>
+    </a>`;
 
   const keyStops = DAYS.flatMap(d => d.stops.filter(s => s.time).map(s => ({ s, d })));
   $("keys").innerHTML = keyStops.map(({ s, d }) =>
