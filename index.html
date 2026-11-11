@@ -506,13 +506,15 @@ button { font: inherit; color: inherit; }
       { kind: "晚餐", name: "自理" }
     ]},
     { n: 3, date: "2026-11-15", md: "11/15", dow: "日", theme: "來客夢・那霸國際通", drive: true, wx: "naha", stops: [
-      { kind: "住宿", name: "Check-out", short: "北谷住宿", pin: "hotel1", q: "沖縄県北谷町北前263-2", note: "北谷町北前 263-2" },
-      { kind: "購物", name: "AEON MALL 沖繩來客夢", short: "來客夢", pin: "rycom", q: "イオンモール沖縄ライカム",
+      { kind: "住宿", name: "Check-out", short: "北谷住宿", pin: "hotel1", q: "沖縄県北谷町北前263-2", time: "11:00 最晚退房",
+        note: "北谷町北前 263-2。AEON 10:00 開門，開車約 12 分，早點退房出發。" },
+      { kind: "購物", name: "AEON MALL 沖繩來客夢", short: "來客夢", pin: "rycom", q: "イオンモール沖縄ライカム", time: "10:00 開門",
+        note: "逛 1 小時左右就出發去漁師食堂。",
         shops: [["1F", ["寶可夢中心", "Loft", "COINS+plus", "GU", "UNIQLO", "Francfranc"]], ["2F", ["mont-bell 旗艦店", "Standard Products", "無印良品", "UNIQLO"]], ["3F", ["ABC-MART"]]] },
       { kind: "午餐", name: "漁師食堂 大ばんぶる舞 さかな大統漁", short: "漁師食堂", pin: "fish",
         q: "漁師食堂 大ばんぶる舞 さかな大統漁 那覇市港町3-1-17", url: "https://maps.app.goo.gl/QESqdRGBsKuszm767",
         note: "那霸市港町 3-1-17，那霸港旁。" },
-      { kind: "租車", name: "還車", car: true, pin: "rent",
+      { kind: "租車", name: "還車", car: true, pin: "rent", time: "14:00",
         q: "i RENTACAR 那覇", url: "https://maps.app.goo.gl/9FiEfyws1fks9DNL9",
         note: "還到取車的 i RENTACAR。還車後請租車公司開車送到壺川的飯店 Check-in。" },
       { kind: "住宿", name: "Check-in", short: "壺川住宿", pin: "hotel2", q: "Creass Hotel Tsubogawa Marche", url: "https://maps.app.goo.gl/JwTunrYoBZ6SEsJf8", drive: false,
@@ -642,7 +644,8 @@ button { font: inherit; color: inherit; }
       <span class="arr" aria-hidden="true">↗</span>
     </a>`;
 
-  const keyStops = DAYS.flatMap(d => d.stops.filter(s => s.time).map(s => ({ s, d })));
+  // Fixed times, earliest first within each day (a check-out deadline can come after the next stop opens).
+  const keyStops = DAYS.flatMap(d => d.stops.filter(s => s.time).sort((a, b) => a.time.localeCompare(b.time)).map(s => ({ s, d })));
   $("keys").innerHTML = keyStops.map(({ s, d }) =>
     `<button class="key" type="button" data-id="${s.id}" style="--dc:var(--d${d.n})"><span class="t">${esc(s.time.split(" ")[0])}</span><span class="d">${d.md}</span><span class="n">${esc(s.time.split(" ")[1] ? (s.short || s.name) + "・" + s.time.split(" ")[1] : (s.short || s.name))}</span></button>`
   ).join("");
